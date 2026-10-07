@@ -99,7 +99,7 @@
             position: relative;
             width: 100%;
             height: 0;
-            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            padding-top: calc(56.25% - 45px); /* Kurangi tinggi sebesar toolbar Canva */
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             margin-bottom: 2rem;
             overflow: hidden;
@@ -110,7 +110,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
+            height: calc(100% + 45px); /* Tambahkan tinggi agar toolbar tertutup (terpotong overflow:hidden) */
             border: none;
             padding: 0;
             margin: 0;
