@@ -95,6 +95,26 @@
             font-weight: bold;
             margin-top: 2rem;
         }
+        .canva-wrapper {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+        .canva-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            padding: 0;
+            margin: 0;
+        }
 
         /* Responsive typography adjustments */
         @media (max-width: 600px) {
@@ -126,6 +146,11 @@
 <body>
 
     <div class="container">
+        <!-- Canva Embed -->
+        <div class="canva-wrapper">
+            <iframe loading="lazy" src="https://www.canva.com/design/DAHXUuMta1A/5NDvc7pkHJpWeJi3D-wTog/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen"></iframe>
+        </div>
+
         <!-- Logo file found in the directory -->
         <img src="ARTSCIM LOGO2.png" alt="Company Logo" class="logo">
         
