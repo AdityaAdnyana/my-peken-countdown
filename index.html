@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Under Development - mypeken.com</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --off-white: #FAF9F6;
+            --forest-green: #228B22;
+            --goldenrod: #DAA520;
+            --charcoal: #36454F;
+            --terracotta: #E2725B;
+        }
+
+        body {
+            background-color: var(--off-white);
+            color: var(--charcoal);
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+
+        .container {
+            padding: 2rem;
+            max-width: 600px;
+        }
+
+        .logo {
+            max-width: 250px;
+            margin-bottom: 2rem;
+            height: auto;
+        }
+        @keyframes fadeLoop {
+            0% { opacity: 1; }
+            50% { opacity: 0.2; }
+            100% { opacity: 1; }
+        }
+
+        h1 {
+            color: var(--forest-green);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 32px;
+            margin-bottom: 0.5rem;
+            animation: fadeLoop 2.5s infinite ease-in-out;
+        }
+
+        p.subtitle {
+            font-size: 16px;
+            margin-bottom: 2.5rem;
+            font-weight: 500;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .time-box {
+            background-color: var(--goldenrod);
+            color: var(--off-white);
+            padding: 1.2rem;
+            border-radius: 8px;
+            min-width: 80px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .time-box span {
+            display: block;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .time-box .label {
+            font-size: 14px;
+            text-transform: uppercase;
+            font-weight: normal;
+            margin-top: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        .notification {
+            color: var(--terracotta);
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 2rem;
+        }
+
+        /* Responsive typography adjustments */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 24px;
+            }
+            p.subtitle, .notification {
+                font-size: 14px;
+            }
+            .time-box span {
+                font-size: 24px;
+            }
+            .time-box .label {
+                font-size: 12px;
+            }
+            .time-box {
+                min-width: 65px;
+                padding: 1rem;
+            }
+            .countdown {
+                gap: 0.75rem;
+            }
+            .logo {
+                max-width: 180px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Logo file found in the directory -->
+        <img src="ARTSCIM LOGO2.png" alt="Company Logo" class="logo">
+        
+        <h1>UNDER DEVELOPMENT</h1>
+        <p class="subtitle">Until: 2 February 2027</p>
+        
+        <div class="countdown" id="countdown">
+            <div class="time-box">
+                <span id="days">00</span>
+                <div class="label">Days</div>
+            </div>
+            <div class="time-box">
+                <span id="hours">00</span>
+                <div class="label">Hours</div>
+            </div>
+            <div class="time-box">
+                <span id="minutes">00</span>
+                <div class="label">Minutes</div>
+            </div>
+            <div class="time-box">
+                <span id="seconds">00</span>
+                <div class="label">Seconds</div>
+            </div>
+        </div>
+
+        <div class="notification" id="notification"></div>
+    </div>
+
+    <script>
+        // Set the date we're counting down to: 2 February 2027
+        const countDownDate = new Date("Feb 2, 2027 00:00:00").getTime();
+
+        // Update the count down every 1 second
+        const x = setInterval(function() {
+
+            // Get today's date and time
+            const now = new Date().getTime();
+
+            // Find the distance between now and the count down date
+            const distance = countDownDate - now;
+
+            // Time calculations for days, hours, minutes and seconds
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Display the result in the corresponding elements, adding leading zero if needed
+            document.getElementById("days").innerText = days < 10 ? "0" + days : days;
+            document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
+            document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
+            document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
+
+            // If the count down is finished, display a message
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("countdown").style.display = "none";
+                document.getElementById("notification").innerText = "WE ARE LIVE NOW!";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
